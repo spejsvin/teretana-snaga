@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNAGA | Profesionalna Teretana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3E00',
+                        secondary: '#1E1E1E',
+                        light: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+        }
+        
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background-color: #FF3E00;
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+        
+        .counter-value {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="font-sans bg-light">
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <span class="text-primary font-bold text-2xl">SNAGA</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#pocetna" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">Pocetna</a>
+                    <a href="#o-nama" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">O Nama</a>
+                    <a href="#usluge" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">Usluge</a>
+                    <a href="#treneri" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">Treneri</a>
+                    <a href="#cenovnik" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">Cenovnik</a>
+                    <a href="#kontakt" class="text-gray-800 hover:text-primary font-medium transition-colors duration-300">Kontakt</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#kontakt" class="hidden md:block bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Zapocni Danas
+                    </a>
+                    <button id="mobileMenuButton" class="md:hidden text-gray-800 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#pocetna" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">Pocetna</a>
+                <a href="#o-nama" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">O Nama</a>
+                <a href="#usluge" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">Usluge</a>
+                <a href="#treneri" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">Treneri</a>
+                <a href="#cenovnik" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">Cenovnik</a>
+                <a href="#kontakt" class="block px-3 py-2 text-gray-800 hover:text-primary font-medium">Kontakt</a>
+            </div>
+            <div class="px-4 py-3">
+                <a href="#kontakt" class="block w-full text-center bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-full">
+                    Zapocni Danas
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="pocetna" class="hero-image min-h-screen flex items-center relative">
+        <div class="gradient-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 text-shadow">
+                    Transformisi Svoje Telo, <span class="text-primary">Transformisi Svoj Zivot</span>
+                </h1>
+                <p class="text-xl text-white mb-8 text-shadow">
+                    Najbolja teretana u gradu sa najmodernijom opremom i profesionalnim trenerima koji ce ti pomoci da ostvaris svoje ciljeve.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#usluge" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-center">
+                        Istrazi Usluge
+                    </a>
+                    <a href="#o-nama" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-secondary font-bold py-3 px-8 rounded-full transition-all duration-300 text-center">
+                        Saznaj Vise
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#o-nama" class="text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section id="o-nama" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">O Nasoj Teretani</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    Vec 10 godina stvaramo prostor gde se snovi o idealnoj formi ostvaruju kroz posvecen rad, strucno vodstvo i najmoderniju opremu.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dumbbell text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Moderna Oprema</h3>
+                    <p class="text-gray-600">
+                        Najnoviji modeli sprava za vezbanje koje garantuju rezultate.
+                    </p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Strucni Treneri</h3>
+                    <p class="text-gray-600">
+                        Sertifikovani profesionalci sa dugogodisnjim iskustvom.
+                    </p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Radno Vreme 24/7</h3>
+                    <p class="text-gray-600">
+                        Vezbaj kad god ti odgovara, teretana je uvek otvorena.
+                    </p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Zajednica</h3>
+                    <p class="text-gray-600">
+                        Postani deo motivacione zajednice istomisljenika.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Teretana Snaga" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Nasa Prica</h3>
+                    <p class="text-gray-600 mb-6">
+                        Teretana SNAGA osnovana je 2013. godine sa jasnom vizijom - stvoriti mesto gde ce svako, bez obzira na nivo fizicke spreme, moci da ostvari svoje fitnes ciljeve.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Danas, nakon 10 godina posvecenog rada, ponosno stojimo kao lider u fitnes industriji naseg grada, sa preko 1,000 aktivnih clanova i timom od 15 vrhunskih trenera.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="text-3xl font-bold text-primary counter-value" data-target="1000">0</span>
+                                <span class="text-xl font-bold text-primary ml-1">+</span>
+                            </div>
+                            <p class="text-gray-600">Zadovoljnih clanova</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="text-3xl font-bold text-primary counter-value" data-target="15">0</span>
+                                <span class="text-xl font-bold text-primary ml-1">+</span>
+                            </div>
+                            <p class="text-gray-600">Profesionalnih trenera</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="text-3xl font-bold text-primary counter-value" data-target="10">0</span>
+                                <span class="text-xl font-bold text-primary ml-1">+</span>
+                            </div>
+                            <p class="text-gray-600">Godina iskustva</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="text-3xl font-bold text-primary counter-value" data-target="500">0</span>
+                                <span class="text-xl font-bold text-primary ml-1">m²</span>
+                            </div>
+                            <p class="text-gray-600">Povrsina teretane</p>
+                        </div>
+                    </div>
+                    <a href="#usluge" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 inline-block">
+                        Istrazi Nase Usluge
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="usluge" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">Nase Usluge</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    Nudimo sirok spektar usluga prilagodenih tvojim potrebama i ciljevima, od individualnih treninga do grupnih casova.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Personalni treninzi" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Personalni Treninzi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Individualni pristup uz pracenje napretka i prilagodavanje programa tvojim potrebama.
+                        </p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Individualni plan treninga
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Nutricionisticki saveti
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Redovno pracenje napretka
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
+                            Saznaj Vise
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Grupni treninzi" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Grupni Treninzi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Energicni casovi u grupi koji motivisu i stvaraju osecaj zajednistva.
+                        </p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                HIIT treninzi
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Yoga i pilates
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Funkcionalni treninzi
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
+                            Saznaj Vise
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Nutricionisticki planovi" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Nutricionisticki Planovi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Personalizovani planovi ishrane koji prate tvoj program treninga.
+                        </p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Personalizovani jelovnici
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Saveti za suplementaciju
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Mesecno prilagodavanje plana
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
+                            Saznaj Vise
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Spremni da Zapocnes Svoju Transformaciju?</h2>
+                    <p class="text-white/90 mb-6">
+                        Pridruzi se nasoj zajednici i kreni na put ka zdravijem i snaznijem telu. Prvi trening je besplatan!
+                    </p>
+                </div>
+                <div class="flex justify-center md:justify-end" data-aos="fade-left">
+                    <a href="#kontakt" class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Zapocni Besplatan Trening
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="treneri" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">Nas Strucni Tim</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    Upoznaj nase sertifikovane trenere sa dugogodisnjim iskustvom koji ce te voditi na putu do tvojih ciljeva.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Marko Petrovic" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-1">Marko Petrovic</h3>
+                        <p class="text-primary font-medium mb-3">Glavni Trener</p>
+                        <p class="text-gray-600 mb-4">
+                            Sertifikovani personalni trener sa 8 godina iskustva i specijalizacijom za funkcionalnu snagu.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ana Jovanovic" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-1">Ana Jovanovic</h3>
+                        <p class="text-primary font-medium mb-3">Nutricionista</p>
+                        <p class="text-gray-600 mb-4">
+                            Diplomirani nutricionista sa fokusom na sportsku ishranu i optimizaciju telesne kompozicije.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nikola Simic" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-1">Nikola Simic</h3>
+                        <p class="text-primary font-medium mb-3">Trener za Snagu</p>
+                        <p class="text-gray-600 mb-4">
+                            Bivsi profesionalni powerlifter sa 10 godina iskustva u treniranju naprednih atleta.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1609899537878-88d5ba429bdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Milica Nikolic" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-1">Milica Nikolic</h3>
+                        <p class="text-primary font-medium mb-3">Yoga Instruktor</p>
+                        <p class="text-gray-600 mb-4">
+                            Sertifikovani yoga instruktor sa fokusom na mobilnost i oporavak sportista.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cenovnik" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">Cenovnik</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    Izaberi paket koji najbolje odgovara tvojim potrebama i ciljevima. Svi paketi ukljucuju pristup svim spravama i osnovnim uslugama.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Osnovni Paket</h3>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-bold text-primary">2500</span>
+                            <span class="text-xl text-gray-600 ml-1">RSD</span>
+                            <span class="text-gray-500 ml-2">/mesecno</span>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup teretani 24/7
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Osnovni plan treninga
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup svim spravama
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                                Personalni treninzi
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                                Nutricionisticki plan
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
+                            Izaberi Paket
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 card-hover border-2 border-primary" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary text-white text-center py-2 font-bold">
+                        Najpopularniji
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Premium Paket</h3>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-bold text-primary">4000</span>
+                            <span class="text-xl text-gray-600 ml-1">RSD</span>
+                            <span class="text-gray-500 ml-2">/mesecno</span>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup teretani 24/7
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Napredni plan treninga
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup svim spravama
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                2 personalna treninga mesecno
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Osnovni nutricionisticki plan
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                            Izaberi Paket
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-4">VIP Paket</h3>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-bold text-primary">6500</span>
+                            <span class="text-xl text-gray-600 ml-1">RSD</span>
+                            <span class="text-gray-500 ml-2">/mesecno</span>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup teretani 24/7
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Personalizovani plan treninga
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Pristup svim spravama
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                8 personalnih treninga mesecno
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Detaljan nutricionisticki plan
+                            </li>
+                        </ul>
+                        <a href="#kontakt" class="block text-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
+                            Izaberi Paket
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">Kontaktiraj Nas</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    Imas pitanje ili zelis da zakazes besplatan probni trening? Popuni formu ispod i javicemo ti se u najkracem roku.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <form id="kontaktForma" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="ime" class="block text-sm font-medium text-gray-700 mb-1">Ime</label>
+                                <input type="text" id="ime" name="ime" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="prezime" class="block text-sm font-medium text-gray-700 mb-1">Prezime</label>
+                                <input type="text" id="prezime" name="prezime" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="telefon" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                            <input type="tel" id="telefon" name="telefon" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="paket" class="block text-sm font-medium text-gray-700 mb-1">Paket koji te zanima</label>
+                            <select id="paket" name="paket" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Izaberi paket</option>
+                                <option value="osnovni">Osnovni Paket</option>
+                                <option value="premium">Premium Paket</option>
+                                <option value="vip">VIP Paket</option>
+                                <option value="personalni">Samo personalni treninzi</option>
+                                <option value="nutricionista">Samo nutricionisticki plan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="poruka" class="block text-sm font-medium text-gray-700 mb-1">Poruka</label>
+                            <textarea id="poruka" name="poruka" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                                Posalji Poruku
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="bg-gray-100 rounded-lg p-8 h-full">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Informacije o Kontaktu</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-secondary mb-1">Adresa</h4>
+                                    <p class="text-gray-600">
+                                        Bulevar Oslobodjenja 123<br>
+                                        11000 Beograd, Srbija
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-secondary mb-1">Telefon</h4>
+                                    <p class="text-gray-600">
+                                        +381 11 123 4567<br>
+                                        +381 63 789 0123
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-secondary mb-1">Email</h4>
+                                    <p class="text-gray-600">
+                                        info@snaga-teretana.rs<br>
+                                        podrska@snaga-teretana.rs
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-secondary mb-1">Radno Vreme</h4>
+                                    <p class="text-gray-600">
+                                        Ponedeljak - Nedelja: 00:00 - 24:00<br>
+                                        Otvoreno 24/7
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <h4 class="text-lg font-medium text-secondary mb-3">Pratite Nas</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9355401559584!2d20.45989231552909!3d44.80700087909866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa991a98f23%3A0xb346c58467ed9d48!2sBulevar%20oslobo%C4%91enja%2C%20Beograd!5e0!3m2!1sen!2srs!4v1652345678901!5m2!1sen!2srs" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-secondary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SNAGA</h3>
+                    <p class="text-gray-400 mb-4">
+                        Transformisi svoje telo, transformisi svoj zivot. Najbolja teretana u gradu sa najmodernijom opremom i profesionalnim trenerima.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Brzi Linkovi</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#pocetna" class="text-gray-400 hover:text-white transition-colors">Pocetna</a>
+                        </li>
+                        <li>
+                            <a href="#o-nama" class="text-gray-400 hover:text-white transition-colors">O Nama</a>
+                        </li>
+                        <li>
+                            <a href="#usluge" class="text-gray-400 hover:text-white transition-colors">Usluge</a>
+                        </li>
+                        <li>
+                            <a href="#treneri" class="text-gray-400 hover:text-white transition-colors">Treneri</a>
+                        </li>
+                        <li>
+                            <a href="#cenovnik" class="text-gray-400 hover:text-white transition-colors">Cenovnik</a>
+                        </li>
+                        <li>
+                            <a href="#kontakt" class="text-gray-400 hover:text-white transition-colors">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Usluge</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Personalni Treninzi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Grupni Treninzi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Nutricionisticki Planovi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Fitness Procene</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Korporativni Programi</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Kontakt</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-gray-400">
+                                Bulevar Oslobodjenja 123<br>
+                                11000 Beograd, Srbija
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span class="text-gray-400">
+                                +381 11 123 4567<br>
+                                +381 63 789 0123
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-gray-400">
+                                info@snaga-teretana.rs
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2023 SNAGA Teretana. Sva prava zadrzana.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Uslovi Koriscenja</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Politika Privatnosti</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#pocetna" id="backToTop" class="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+            
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            const progressBar = document.getElementById('progressBar');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.body.offsetHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+                
+                const navbar = document.getElementById('navbar');
+                if (scrollTop > 50) {
+                    navbar.classList.add('bg-white', 'shadow-md');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    navbar.classList.remove('bg-white', 'shadow-md');
+                    navbar.classList.add('bg-transparent');
+                }
+                
+                const backToTop = document.getElementById('backToTop');
+                if (scrollTop > 300) {
+                    backToTop.classList.remove('opacity-0', 'invisible');
+                    backToTop.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTop.classList.add('opacity-0', 'invisible');
+                    backToTop.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            const counterElements = document.querySelectorAll('.counter-value');
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        const duration = 2000; // 2 sekunde
+                        const increment = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            entry.target.textContent = Math.floor(current);
+                            
+                            if (current >= target) {
+                                entry.target.textContent = target;
+                                clearInterval(timer);
+                            }
+                        }, 16);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counterElements.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Offset za fiksnu navigaciju
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
