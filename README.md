@@ -4,7 +4,7 @@
 
 **SNAGA** je moderna, responzivna web stranica za teretanu napravljena koristeci HTML5, Tailwind CSS i JavaScript. Projekat predstavlja profesionalno resenje za fitnes centre i teretane koje zele da poboljsaju svoje online prisustvo.
 
-![SNAGA Teretana](https://via.placeholder.com/800x400?text=SNAGA+Teretana)
+![SNAGA Teretana](https://cdn.discordapp.com/attachments/1187389819807092868/1348257334153052170/image.png?ex=67cecdfd&is=67cd7c7d&hm=db553a8d21500102c23bfface7fb15cf2223d1420f65667434223e2d9722c35d&)
 
 ## Funkcionalnosti
 
